@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&family=Tiny5&display=swap');
+*{
+    margin: 0;
+    font-family: sans-serif;
+}
+.blue{
+    background:rgb(64, 64, 255);
+}
+.red{
+    background: rgb(255, 105, 105);
+}
+.tableau{
+    display: grid;
+    border: solid 2px black;
+    width: 850px;
+    height: 850px;
+    grid-template-columns:repeat(3,1fr);
+    margin: 10vh auto 0px auto;
+}
+.tableau div{
+    border: 5px black solid;
+}
+.jeu{
+    background-color: white;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 80px;
+    margin: 50px auto 0px auto;
+    width: max-content;
+    font-family: "Tiny5";
+}
+.tourb{
+    color: blue;
+}
+.tourb::after{
+    content: "Bleu !";
+    
+}
+.tourr{
+    color: red;
+}
+.tourr::after{
+    content: "Rouge !";
+    
+}
