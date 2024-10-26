@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    font-family: sans-serif;
+}
+.titre{
+    font-size: 150px;
+    width: max-content;
+    margin: 75px auto;
+    font-family: sans-serif;
+    font-weight: 900;
+    border:black 7px solid ;
+    border-radius:10px ;
+    transition: 0.5s;
+  }
+  .titre:hover{
+    scale:1.1 1.1;
+    transition: 0.5s;
+    background-color:rgb(233, 233, 233) ;
+    border-bottom: red  5px solid;
+    border-top:blue 5px solid ;
+    border-left: blue 5px solid;
+    border-right: red 5px solid;
+  }
+  .titre .red{
+    color: red;
+  }
+  .titre .blue{
+        color:blue;
+  }
+.input{
+    
+    display: flex;
+    border:black 7px solid ;
+    height: 600px;
+    width: 650px;
+    margin:20px auto;
+    transition: 0.5s;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 100px;
+    border-radius: 10px; 
+}
+.input:hover{
+    scale:1.1 1.1;
+    transition: 0.5s;
+    background-color:rgb(233, 233, 233) ;
+    border-bottom: red  5px solid;
+    border-top:blue 5px solid ;
+    border-left: blue 5px solid;
+    border-right: red 5px solid; 
+}
+.input button{
+    height: 175px;
+    width: 400px;
+    border-radius: 10px;
+    border: 5px black solid;
+    font-size: 50px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.input button:hover{
+    scale:1.15 1.15 ;
+    transition: 0.5s;
+    color: white;
+}
+.input button:before,.input button:after{
+    content: "";
+    height: 170px;
+    width: 10px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+.input button:hover::before{
+    background-color: red;
+    scale: 37 1;
+    transition: 0.5s;
+}
+.input button:hover::after{
+    background-color: blue;
+    scale: 37 1;
+    transition: 0.5s;
+}
