@@ -7,6 +7,9 @@ app.use("/public",express.static(`${__dirname}/public`))
 app.get("/",(req,res)=>{
   res.sendFile(`${__dirname}/public/html/Morpion.html`)
 })
+app.get("/local",(req,res)=>{
+  res.sendFile(`${__dirname}/public/html/local.html`)
+})
 http.listen(port,()=>{
     console.log(`écoute sur le port ${port}...`)
 })

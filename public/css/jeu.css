@@ -6,12 +6,15 @@
 .blue{
     background:rgb(64, 64, 255);
 }
+body{
+    transition: 1s;
+}
 .red{
     background: rgb(255, 105, 105);
 }
 .tableau{
     display: grid;
-    border: solid 2px black;
+    background-color: white;
     width: 850px;
     height: 850px;
     grid-template-columns:repeat(3,1fr);
@@ -19,7 +22,10 @@
 }
 .tableau div{
     border: 5px black solid;
+    transition: 0.5s;
 }
+
+
 .jeu{
     background-color: white;
     border-radius: 10px;
@@ -29,8 +35,26 @@
     width: max-content;
     font-family: "Tiny5";
 }
+@keyframes choisi{
+   0%{
+    rotate: 10deg;
+   }
+    50%{
+        scale: 1.5 1.5;
+    }
+}
+.rond{
+    background-color: rgb(57, 57, 254);
+    animation: choisi 1s;
+}
+.croix{
+    background-color: rgb(255, 14, 14);
+    animation: choisi 1s;
+}
+
 .tourb{
     color: blue;
+    transition: 1s;
 }
 .tourb::after{
     content: "Bleu !";
@@ -38,6 +62,7 @@
 }
 .tourr{
     color: red;
+    transition: 1s;
 }
 .tourr::after{
     content: "Rouge !";

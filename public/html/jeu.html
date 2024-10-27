@@ -3,20 +3,65 @@
 <head>
     <meta charset="utf-8">
     <link href="/public/css/jeu.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/public/js/jeu.js"></script>
+  <script>
+    let partie=[
+   [0,0,0],
+   [0,0,0],
+   [0,0,0]
+]
+let tour=true
+$(function(){
+    function red(){
+     $("body").css("background","  rgb(255, 105, 105)")
+     $(".jeu").removeClass("tourb").addClass("tourr")
+    }
+    function blue(){
+    $("body").css("background","rgb(64, 64, 255)")
+     $(".jeu").removeClass("tourr").addClass("tourb")
+    }
+    function choisi(child,etat){
+         let enfant=$(child)
+         if(etat){
+            enfant.addClass("rond")
+            red()
+         }
+         else{
+            enfant.addClass("croix")
+            blue()
+         }
+    }
+    $(".tableau *").on("click",(event)=>{
+    let tableau=$(".tableau")
+    let i=tableau.children().index(event.target)
+    partie[(i-i%3)/3][i%3]=tour ? 1:-1
+       
+       
+    console.log(partie)
+
+     choisi(event.target,tour)
+     $(event.target).off("click")
+     tour=!tour
+
+
+  })
+})
+  </script>
     <title>Morpion</title>
 </head>
-<body>
+<body style="background-color:blue;">
     <div class="tableau">
+        <div ></div>
+        <div ></div>
+        <div ></div>
+        <div ></div>
+        <div ></div>
         <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div ></div>
+        <div ></div>
+        <div ></div>
     </div>
-    <h1 class="tourr jeu">Au Tour du </h1>
+    <h1 class="tourb jeu">Au Tour du </h1>
 </body>
 </html>
