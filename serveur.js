@@ -10,6 +10,9 @@ app.get("/",(req,res)=>{
 app.get("/local",(req,res)=>{
   res.sendFile(`${__dirname}/public/html/local.html`)
 })
+app.all("*",(req,res)=>{
+  res.redirect("/")
+})
 http.listen(port,()=>{
     console.log(`écoute sur le port ${port}...`)
 })
