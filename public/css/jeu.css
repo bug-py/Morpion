@@ -43,28 +43,28 @@ body{
         scale: 1.5 1.5;
     }
 }
-.rond{
+.rondm{
     background-color: rgb(57, 57, 254);
     animation: choisi 1s;
 }
-.croix{
+.croixm{
     background-color: rgb(255, 14, 14);
     animation: choisi 1s;
 }
 
-.tourb{
+.tourm{
     color: blue;
     transition: 1s;
 }
-.tourb::after{
+.tourm::after{
     content: "Bleu !";
     
 }
-.tourr{
+.tourm{
     color: red;
     transition: 1s;
 }
-.tourr::after{
+.tourm::after{
     content: "Rouge !";
     
 }
