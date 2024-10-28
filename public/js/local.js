@@ -17,6 +17,9 @@ let coup=0;
             return false;
          }
     }
+    if(coup==9){
+      return null
+    }
      }
      function schéma(matrice)
      {
@@ -55,9 +58,7 @@ let coup=0;
      choisi(event.target)
      $(event.target).off("click")
     let resultat=vérification(schéma(partie))
-    if(coup==9){
-      resultat="null"
-    }
+   
      if(resultat!=undefined){
         $(".tableau *").off("click")
         win(resultat)

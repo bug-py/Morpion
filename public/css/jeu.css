@@ -3,15 +3,10 @@
     margin: 0;
     font-family: sans-serif;
 }
-.blue{
-    background:rgb(64, 64, 255);
-}
 body{
     transition: 1s;
 }
-.red{
-    background: rgb(255, 105, 105);
-}
+
 .tableau{
     display: grid;
     background-color: white;
@@ -42,32 +37,4 @@ body{
     50%{
         scale: 1.5 1.5;
     }
-}
-.rondm{
-    background-color: rgb(57, 57, 254);
-    animation: choisi 1s;
-}
-.croixm{
-    background-color: rgb(255, 14, 14);
-    animation: choisi 1s;
-}
-
-.tourm{
-    color: blue;
-    transition: 1s;
-}
-.tourm::after{
-    content: "Bleu !";
-    
-}
-.tourm{
-    color: red;
-    transition: 1s;
-}
-.tourm::after{
-    content: "Rouge !";
-    
-}
-.reset{
-    background-color: grey;
 }
