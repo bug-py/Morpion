@@ -1,6 +1,12 @@
 let tour;
 let red=[{"background":"rgb(255, 105, 105)"},{"color":"red"}]
 let blue=[{"background":"rgb(64, 64, 255"},{"color":"blue"}]
+let coup=0;
+let partie=[
+  [0,0,0],
+  [0,0,0],
+  [0,0,0]
+]
 function graphique(cible,css){
   $("body").css(css[0])
   cible.css(css[1])
@@ -46,3 +52,51 @@ function choisi(child){
     winner ? graphique($(".jeu"),blue):graphique($(".jeu"),red)
   
  }
+ function matrice(cible){
+  let i=$(".tableau").children().index(cible)
+  partie[(i-i%3)/3][i%3]=tour ? 1:-1
+
+ }
+ function vérification(liste){
+  for(let element of liste){
+    if(element.includes(3)){
+        return true;
+       }
+       if(element.includes(-3)){
+             
+          return false;
+       }
+  }
+  if(coup==9){
+    return "null"
+  }
+   }
+
+   function schéma(matrice)
+   {
+      let liste=[[0,0,0],[0,0,0],[0,0]]
+      for(let index=0;index<matrice.length;index++)
+      {
+      for(let i=0;i<matrice[index].length;i++)
+       {
+       
+       let element=partie[index][i]
+       liste[0][index]+=element
+       liste[1][i]+=element
+
+       if(index==i)
+        {
+        liste[2][0]+=element
+        if(index==1)
+            {
+             liste[2][1]+=element
+            }
+        }
+        else if(i+index==2)
+          {
+           liste[2][1]+=element
+          }  
+       }
+      }
+      return liste
+   }
