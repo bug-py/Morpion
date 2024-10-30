@@ -1,15 +1,18 @@
+import {choisi,win,start} from "/public/js/Visual.js"
+import {tour,partie,vérification,schéma,matrice} from "/public/js/Logique.js"
 $(function(){
-     start(true)
+     start(tour)
      $(".tableau *").on("click",(event)=>
      {
-     coup++
+      choisi(event.target,tour)
      matrice(event.target)
-     choisi(event.target)
-      $(event.target).off("click")
+     $(event.target).off("click")
      let resultat=vérification(schéma(partie))
+    
      if(resultat!=undefined){
         $(".tableau *").off("click")
         win(resultat)
      }
+
      })
  })
