@@ -1,14 +1,18 @@
 import {choisi,win,start} from "/public/js/Visual.js"
-import {tour,partie,vérification,schéma,matrice} from "/public/js/Logique.js"
+import logique from "/public/js/Logique.js"
+let tour=Math.floor(Math.random()*2)
 $(function(){
-     start(tour)
+     start(!tour)
      $(".tableau *").on("click",(event)=>
      {
+      tour=!tour
+      let resultat=logique(event.target,tour)
+      
       choisi(event.target,tour)
-     matrice(event.target)
-     $(event.target).off("click")
-     let resultat=vérification(schéma(partie))
+      
     
+   
+     $(event.target).off("click")
      if(resultat!=undefined){
         $(".tableau *").off("click")
         win(resultat)

@@ -1,6 +1,5 @@
 require("dotenv").config()
 const port=process.env.port
-const { group } = require("console")
 const express=require("express")
 const app=express()
 const http=require("http").createServer(app)

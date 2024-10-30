@@ -1,4 +1,4 @@
-let tour=Math.floor(Math.random()*2)
+
 let coup=0;
 let partie=[
 [0,0,0],
@@ -6,15 +6,14 @@ let partie=[
 [0,0,0]
 ]
 
-function matrice(cible){
+function matrice(cible,tour){
         let i=$(".tableau").children().index(cible)
         partie[(i-i%3)/3][i%3]=tour ? 1:-1
-
+        return partie
 }
 
-function vérification(liste){
+function verification(liste){
     
-    tour=!tour
     coup++
     for(let element of liste){
     if(element.includes(3)){
@@ -30,7 +29,7 @@ function vérification(liste){
         }
         }
 
-    function schéma(matrice)
+    function schema(matrice)
         {
         let liste=[[0,0,0],[0,0,0],[0,0]]
         for(let index=0;index<matrice.length;index++)
@@ -58,4 +57,7 @@ function vérification(liste){
             }
             return liste
         }
-export {tour,coup,partie,vérification,schéma,matrice}
+
+export default function logique(cible,tour){
+ return verification(schema(matrice(cible,tour)))
+}

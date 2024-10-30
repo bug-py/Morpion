@@ -1,43 +1,53 @@
 
-  const Propriété={
-    NomT:"Bleu",
-    NomF:"Rouge",
-    bFalse:[[$("body"),{"background":"rgb(255, 105, 105)"}],[$(".jeu"),{"color":"red"}]],
-    bTrue:[[$("body"),{"background":"rgb(64, 64, 255"}],[$(".jeu"),{"color":"blue"}]],
-    True:{"animation":"choisi 1s","background":"blue"},
-    False:{"animation":"choisi 1s","background":"red"}
+const Game={
+    Players:{
+     Player1:{
+        Name:"Bleu",
+        Event:[[$("body"),{"background":"rgb(64, 64, 255"}],[$(".jeu"),{"color":"blue"}]],
+        css:{"animation":"choisi 1s","background":"blue"},
+        win:[[$(".tableau *"),{"background":"blue"}]]
+     },
+     Player2:{
+         Name:"Rouge",
+         Event:[[$("body"),{"background":"rgb(255, 105, 105)"}],[$(".jeu"),{"color":"red"}]],
+         css:{"animation":"choisi 1s","background":"red"},
+         win:[[$(".tableau *"),{"background":"red"}]]
+     }
+    },
+     Jeu:{
+       Null:[[$(".tableau *"),{"background":"gray"}]],
+       Nul:[[$(".jeu"),{"color":"gray"}],[$("body"),{"background":"gray"}]]
+
+     }
   }
- 
+ const Player1=Game.Players.Player1
+ const Player2=Game.Players.Player2
+ console.log(Player1,Player2)
   function graphique(param){
     for(let cible of param){
       cible[0].css(cible[1])
     }
-   
   }
   function start(init){
-      graphique(init ? Propriété.bTrue:Propriété.bFalse);
-      $(".jeu").text(`C'est partit ${init ? Propriété.NomT:Propriété.NomF}`);
+      graphique(init ? Player1.Event:Player2.Event);
+      $(".jeu").text(`C'est partit ${init ? Player1.Name:Player2.Name}`);
   }
   function choisi(child,tour){
-        graphique(tour ?Propriété.bTrue:Propriété.bFalse)
-        $(child).css(tour ? Propriété.True:Propriété.False)
-        $(".jeu").text(`Au tour du ${tour ? Propriété.NomT:Propriété.NomF}`)
+        graphique(!tour ?Player1.Event:Player2.Event)
+        $(child).css(tour ? Player1.css:Player2.css)
+        $(".jeu").text(`Au tour du ${!tour ? Player1.Name:Player2.Name}`)
+        
   }
   function win(winner){
     if(typeof(winner)=="string"){
       $(".jeu").text("Match Nul")
-      setTimeout(() => {
-      $(".tableau *").css({"background":"rgb(100, 100, 100)"})
-      },1000); 
-      //graphique($(".jeu"),[{"background":"gray"},{"color":"gray"}])
-      console.log("égalité")
+      setTimeout(()=>{graphique(Game.Jeu.Null)},1000)
+      graphique(Game.Jeu.Nul)
       return
     }
     
-    $(".jeu").text(`Bravo tu as gagné ${winner ? Propriété.NomT:Propriété.NomF}`)
-    setTimeout(() => {
-      $(".tableau *").css("background",winner ? Propriété.NomT:Propriété.NomF)
-    },2000); 
-       graphique(winner ? Propriété.bTrue :Propriété.bFalse)
+    $(".jeu").text(`Bravo tu as gagné ${winner ? Player1.Name:Player2.Name}`)
+    setTimeout(() => {graphique(winner ? Player1.win:Player2.win)},1000); 
+    graphique(winner ? Player1.Event :Player2.Event)
   }
-export {Propriété,graphique,choisi,win,start}
+export {choisi,win,start}
