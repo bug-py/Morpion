@@ -1,0 +1,10 @@
+@keyframes Basic{
+    0%{
+     rotate: 10deg;
+    }
+     50%{
+         scale: 1.5 1.5;
+     }
+ }
+
+ 
