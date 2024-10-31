@@ -1,31 +1,39 @@
 
-const Game={
+const Game=JSON.parse(localStorage.getItem("Game"))
+     
+  if(Game==null){
+
+Game={
     Players:{
-     Player1:{
+      Player1:{
         Name:"Bleu",
-        Event:[[$("body"),{"background":"rgb(64, 64, 255"}],[$(".jeu"),{"color":"blue"}]],
+        Event:[["body",{"background":"rgb(64, 64, 255"}],[".jeu",{"color":"blue"}]],
         css:{"animation":"Basic 1s","background":"blue"},
-        win:[[$(".tableau *"),{"background":"blue"}]]
+        win:[[".tableau *",{"background":"blue"}]]
      },
      Player2:{
          Name:"Rouge",
-         Event:[[$("body"),{"background":"rgb(255, 105, 105)"}],[$(".jeu"),{"color":"red"}]],
+         Event:[["body",{"background":"rgb(255, 105, 105)"}],[".jeu",{"color":"red"}]],
          css:{"animation":"Basic 1s","background":"red"},
-         win:[[$(".tableau *"),{"background":"red"}]]
+         win:[[".tableau *",{"background":"red"}]]
      }
     },
-     Jeu:{
-       Null:[[$(".tableau *"),{"background":"gray"}]],
-       Nul:[[$(".jeu"),{"color":"gray"}],[$("body"),{"background":"gray"}]]
-
+      Jeu:{
+              Null:[[$(".tableau *"),{"background":"gray"}]],
+              Nul:[[$(".jeu"),{"color":"gray"}],[$("body"),{"background":"gray"}]]
+       
+            }
      }
   }
+     
+console.log(Game)
+
  const Player1=Game.Players.Player1
  const Player2=Game.Players.Player2
  console.log(Player1,Player2)
   function graphique(param){
     for(let cible of param){
-      cible[0].css(cible[1])
+      $(cible[0]).css(cible[1])
     }
   }
   function start(init){
