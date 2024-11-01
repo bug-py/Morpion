@@ -1,5 +1,5 @@
 
-const Game=JSON.parse(localStorage.getItem("Game"))
+let Game=JSON.parse(localStorage.getItem("Game"))
      
   if(Game==null){
 
@@ -19,8 +19,8 @@ Game={
      }
     },
       Jeu:{
-              Null:[[$(".tableau *"),{"background":"gray"}]],
-              Nul:[[$(".jeu"),{"color":"gray"}],[$("body"),{"background":"gray"}]]
+              Null:[[".tableau *",{"background":"gray"}]],
+              Nul:[[".jeu",{"color":"gray"}],["body",{"background":"gray"}]]
        
             }
      }
