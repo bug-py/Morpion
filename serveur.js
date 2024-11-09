@@ -12,6 +12,9 @@ app.get("/",(req,res)=>{
 app.get("/local",(req,res)=>{
   res.sendFile(`${__dirname}/public/html/local.html`)
 })
+app.get("/style",(req,res)=>{
+  res.sendFile(`${__dirname}/public/html/config.html`)
+})
 
 app.all("*",(req,res)=>{
   res.redirect("/")

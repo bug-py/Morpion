@@ -1,6 +1,5 @@
 
 let Game=JSON.parse(localStorage.getItem("Game"))
-     
   if(Game==null){
 
 Game={
@@ -47,13 +46,19 @@ console.log(Game)
         
   }
   function win(winner){
+    let score=JSON.parse(sessionStorage.getItem("score")) || [0,0]
     if(typeof(winner)=="string"){
+      score[0]+=1
+      score[1]+=1
+      sessionStorage.setItem("score",JSON.stringify(score))
       $(".jeu").text("Match Nul")
       setTimeout(()=>{graphique(Game.Jeu.Null)},1000)
       graphique(Game.Jeu.Nul)
       return
     }
-    
+    console.log(score)
+    score[BigInt(winner)]+=1
+    sessionStorage.setItem("score",JSON.stringify(score))
     $(".jeu").text(`Bravo tu as gagné ${winner ? Player1.Name:Player2.Name}`)
     setTimeout(() => {graphique(winner ? Player1.win:Player2.win)},1000); 
     graphique(winner ? Player1.Event :Player2.Event)

@@ -10,8 +10,6 @@ $(function(){
       
       choisi(event.target,tour)
       
-    
-   
      $(event.target).off("click")
      if(resultat!=undefined){
         $(".tableau *").off("click")

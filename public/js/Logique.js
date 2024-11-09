@@ -1,10 +1,12 @@
 
 let coup=0;
 let partie=[
-[0,0,0],
-[0,0,0],
-[0,0,0]
-]
+    [0,0,0],
+    [0,0,0],
+    [0,0,0]
+    ]
+    
+
 
 function matrice(cible,tour){
         let i=$(".tableau").children().index(cible)
@@ -15,8 +17,10 @@ function matrice(cible,tour){
 function verification(liste){
     
     coup++
+
     for(let element of liste){
     if(element.includes(3)){
+
             return true;
             }
             if(element.includes(-3)){
