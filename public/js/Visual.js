@@ -1,66 +1,64 @@
 
-let Game=JSON.parse(localStorage.getItem("Game"))
-  if(Game==null){
-
-Game={
-    Players:{
+let Game=JSON.parse(localStorage.getItem("Game"))||{
+  Players:{
       Player1:{
-        Name:"Bleu",
-        Event:[["body",{"background":"rgb(64, 64, 255"}],[".jeu",{"color":"blue"}]],
-        css:{"animation":"Basic 1s","background":"blue"},
-        win:[[".tableau *",{"background":"blue"}]]
+        name:"Bleu",
+      background:"#4040e1",
+      color:"#0000ff",
+      animation:{"name":"Basic","time":1}
      },
      Player2:{
-         Name:"Rouge",
-         Event:[["body",{"background":"rgb(255, 105, 105)"}],[".jeu",{"color":"red"}]],
-         css:{"animation":"Basic 1s","background":"red"},
-         win:[[".tableau *",{"background":"red"}]]
+         name:"Rouge",
+         background:"#ff6969",
+         color:"#ff0000",
+         animation:{"name":"Basic","time":1}  
      }
     },
       Jeu:{
-              Null:[[".tableau *",{"background":"gray"}]],
-              Nul:[[".jeu",{"color":"gray"}],["body",{"background":"gray"}]]
-       
+             color:"#808080",
+             background:"#808080"
             }
      }
-  }
+  
      
 console.log(Game)
 
- const Player1=Game.Players.Player1
- const Player2=Game.Players.Player2
- console.log(Player1,Player2)
-  function graphique(param){
-    for(let cible of param){
-      $(cible[0]).css(cible[1])
-    }
-  }
+ function simple(bool){
+  return bool?Game.Players.Player1:Game.Players.Player2
+ }
+ function changement(who){
+  $("body").css("background",who.background)
+  $(".jeu").css("color",who.color)
+ }
   function start(init){
-      graphique(init ? Player1.Event:Player2.Event);
-      $(".jeu").text(`C'est partit ${init ? Player1.Name:Player2.Name}`);
+      changement(simple(init));
+      $(".jeu").text(`C'est partit ${simple(init).name}`);
   }
   function choisi(child,tour){
-        graphique(!tour ?Player1.Event:Player2.Event)
-        $(child).css(tour ? Player1.css:Player2.css)
-        $(".jeu").text(`Au tour du ${!tour ? Player1.Name:Player2.Name}`)
-        
+       const player=simple(tour)
+        changement(simple(!tour))
+       
+        $(child).css({"animation":`${player.animation.name} ${player.animation.time}s`,"background":player.color})
+        $(".jeu").text(`Au tour du ${simple(!tour).name} `)
   }
   function win(winner){
+    const player=simple(winner)
     let score=JSON.parse(sessionStorage.getItem("score")) || [0,0]
     if(typeof(winner)=="string"){
       score[0]+=1
       score[1]+=1
       sessionStorage.setItem("score",JSON.stringify(score))
       $(".jeu").text("Match Nul")
-      setTimeout(()=>{graphique(Game.Jeu.Null)},1000)
-      graphique(Game.Jeu.Nul)
+      setTimeout(()=>{$(".tableau *").css("background",Game.Jeu.color)},1000)
+      changement(Game.Jeu)
       return
     }
     console.log(score)
     score[BigInt(winner)]+=1
     sessionStorage.setItem("score",JSON.stringify(score))
-    $(".jeu").text(`Bravo tu as gagné ${winner ? Player1.Name:Player2.Name}`)
-    setTimeout(() => {graphique(winner ? Player1.win:Player2.win)},1000); 
-    graphique(winner ? Player1.Event :Player2.Event)
+    $(".jeu").text(`Bravo tu as gagné ${player.name}`)
+    setTimeout(() => {$(".tableau *").css("background",player.color)},1000); 
+    changement(simple(winner))
+    
   }
 export {choisi,win,start}

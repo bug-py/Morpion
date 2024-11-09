@@ -32,8 +32,8 @@ $(".Player1 .name").val(Player1.Name)
 $(".Player2 .name").val(Player2.Name)
 $(".Player1 .bac").val(Player1.Event[0][1].background)
 $(".Player2 .bac").val(Player2.Event[0][1].background)
-$(".Player1 .color").val(config.Players.Player1.css.background)+" 1s"
-$(".Player2 .color").val( config.Players.Player2.css.background)+" 1s"
+$(".Player1 .color").val(config.Players.Player1.css.background)
+$(".Player2 .color").val( config.Players.Player2.css.background)
 }
 
 $(()=>{
@@ -45,6 +45,8 @@ $(()=>{
         console.log(config.Players.Player1.Event[0][1])
         config.Players.Player1.Event[0][1].background=$(".Player1 .bac").val()
         config.Players.Player2.Event[0][1].background=$(".Player2 .bac").val()
+        config.Players.Player1.Event[1][1].color=$(".Player1 .color").val()
+        config.Players.Player2.Event[1][1].color=$(".Player2 .color").val()
         config.Players.Player1.css.background=$(".Player1 .color").val()
         config.Players.Player2.css.background=$(".Player2 .color").val()
         config.Players.Player1.css.animation=$(".Player1 .animation").val()+" 1s"

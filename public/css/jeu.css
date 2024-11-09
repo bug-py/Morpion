@@ -31,3 +31,12 @@ body{
     width: max-content;
     font-family: "Tiny5";
 }
+.score{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.score h1{
+    font-size: 110px;
+    font-family: Verdana;
+}
