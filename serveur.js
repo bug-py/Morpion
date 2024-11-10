@@ -1,5 +1,5 @@
 require("dotenv").config()
-const port=process.env.port
+const port=process.env.port || 80
 const express=require("express")
 const app=express()
 const http=require("http").createServer(app)
@@ -21,7 +21,7 @@ app.all("*",(req,res)=>{
 })
 io.on("connection",(socket)=>{
      user++
-     io.emit("user",user)
+     io.emit("user",user) 
      socket.on("disconnect",()=>{
       user--
       io.emit("user",user)
